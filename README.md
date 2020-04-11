@@ -5,8 +5,8 @@ _Information for Program Including Notes and Explanation of LinkedLists_
 ## **Table of Contents**
 
 * [About me](https://github.com/Markay12/JavaLinkedList#about-me)
-* [Program Information]()
-* [Data Structures]()
+* [Program Information](https://github.com/Markay12/JavaLinkedList#program-information)
+* [Data Structures](https://github.com/Markay12/JavaLinkedList#data-structures)
 * [Linked Lists]()
 
 
@@ -47,7 +47,7 @@ To understand LinkedLists you must first understand data structures and how they
 \
 An object _reference_ is a var that stores the address of an object\
 A reference is also called a _pointer_\
-Object references can be used to create _links_ between objects
+Object references can be used to create _links_ between objects\
 
 ![Data Structure Tree](https://raw.githubusercontent.com/Markay12/JavaLinkedList/master/edu/dataStructure.png)
 
