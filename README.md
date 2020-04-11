@@ -8,6 +8,8 @@ _Information for Program Including Notes and Explanation of LinkedLists_
 * [Program Information](https://github.com/Markay12/JavaLinkedList#program-information)
 * [Data Structures](https://github.com/Markay12/JavaLinkedList#data-structures)
 * [Linked Lists]()
+* [Linked List UML Diagram]()
+* [Linked List Effeciency]()
 
 
 
@@ -47,9 +49,295 @@ To understand LinkedLists you must first understand data structures and how they
 \
 An object _reference_ is a var that stores the address of an object\
 A reference is also called a _pointer_\
-Object references can be used to create _links_ between objects\
+Object references can be used to create _links_ between objects
 
 ![Data Structure Tree](https://raw.githubusercontent.com/Markay12/JavaLinkedList/master/edu/dataStructure.png)
+
+
+## **_Linked Lists_**
+Consider an object that contains a reference to another object of the same type:
+
+```Java
+
+class Node
+{
+
+    String name;
+    Node pointer;
+
+}
+
+```
+1. This can construct a _linked list_
+![Name to Pointer]()
+
+2. **Delete** an entry from a linked list
+![DeleteEntry]()
+
+3. Insert an element into the linked list
+![addElement]()
+
+
+### Below is the basic information for constructing a linked list
+
+_Note:_ You need to be careful in boundary cases such as
+operations at the beginning and the end of a list.
+
+```Java
+
+//This Linked List class shows how some of its commonly used methods are implemented. 
+// A linked list is a sequence of nodes with efficient element insertion and removal.
+// This class contains a subset of the methods of the standard java.util.LinkedList class.
+
+import java.util.NoSuchElementException;
+
+public class LinkedList
+{
+
+    private class Node //nested class to represent a node
+
+    {
+
+        public Object data;
+        public Node next;
+
+    }
+
+    private Node first; //only instance variable that points to the first node.
+
+    // Constructs an empty linked list.
+    public LinkedList()
+    {
+
+        first = null;
+
+    }
+
+    //Returns the first element in the linked list.
+    public Object getFirst()
+    {
+
+        if (first == null)
+        {
+
+            NoSuchElementException ex = new NoSuchElementException();
+            throw ex;
+
+        }
+
+        else
+            return first.data; //returns object of the first element
+
+
+    }
+
+    // Removes the first element in the linked list.
+    public Object removeFirst()
+    {
+
+        if (first == null)
+        {
+            NoSuchElementException ex = new NoSuchElementException();
+            throw ex;
+        }
+        else
+        {
+            Object element = first.data;
+            first = first.next;  //change the reference since it's removed  
+            return element;
+        }
+
+    }
+
+    // Adds an element to the front of the linked list.
+    public void addFirst(Object element)
+    {
+
+        //create a new node
+        Node newNode = new Node();
+        newNode.data = element;
+        newNode.next = first;
+        //change the first reference to the new node.
+        first = newNode;
+
+    }   
+
+    // Returns an iterator for iterating through this list.
+    public ListIterator listIterator()
+    {
+
+        return new LinkedListIterator();
+
+    }
+
+    //nested class to define its iterator
+    private class LinkedListIterator implements ListIterator
+    {
+
+        private Node position; //current position
+        private Node previous; //it is used for remove() method
+
+        // Constructs an iterator that points to the front of the linked list.
+        public LinkedListIterator()
+        {
+            position = null;
+            previous = null;
+        }
+
+        // Tests if there is an element past the iterator position.
+        public boolean hasNext()
+        {
+            if (position == null) //not traversed yet
+            {
+
+                if (first != null)  return true;
+                else   return false;
+            }
+            else
+            {
+                if (position.next != null)  return true;
+                else  return false;
+            }
+        }
+
+        // Moves the iterator to the next element, and returns
+        // the traversed element's data.
+        public Object next()
+        {
+
+            if (!hasNext()) {
+                NoSuchElementException ex = new NoSuchElementException();
+                throw ex;
+            }
+            else {
+
+                previous = position; // Remember for remove
+                if (position == null)   position = first;
+                else     position = position.next;
+                return position.data;
+            }
+        }
+
+        // Adds an element past the iterator position
+        // and moves the iterator to point to
+        //  the inserted element.
+        public void add(Object element)
+        {
+
+            if (position == null) //never traversed yet
+            {
+
+                addFirst(element);
+                position = first;
+            
+            }
+            else
+            {
+
+                //making a new node to add
+                Node newNode = new Node();
+                newNode.data = element;
+                newNode.next = position.next;
+
+                //change the link to insert the new node
+                position.next = newNode;
+
+                //move the position forward to the new node
+                position = newNode;
+
+            }
+
+            //this means that we cannot call remove() right after add()
+            previous = position;
+        }
+
+
+        // Removes the last traversed element. This method may
+        // only be called after a call to the next() method.
+        public void remove()
+        {
+
+            if (previous == position)  //not after next() is called
+            {
+
+                IllegalStateException ex = new IllegalStateException();
+                throw ex;
+            
+            }
+            else
+            {
+
+                if (position == first)   
+                    removeFirst();
+
+                else
+                    previous.next = position.next; //removing
+
+                //stepping back
+                //this also means that remove() cannot be called twice in a row
+                position = previous;
+
+            }
+
+        }
+
+        // Sets the last traversed element to a different value
+        public void set(Object element)
+        {
+
+            if (position == null)  {
+
+                NoSuchElementException ex = new NoSuchElementException();
+                throw ex;
+            }
+            else
+                position.data = element;
+        }
+            
+    } //end of LinkedListIterator class
+} //end of LinkedList class
+
+
+// The ListIterator interface allows access of a position in a linked list.
+// This interface contains a subset of the methods of the standard java.util.ListIterator interface. 
+// The methods for backward traversal are not included.
+
+public interface ListIterator
+{
+
+    //Move Moves the iterator past the next element.
+    Object next();
+
+    // Tests if there is an element after the iterator position.
+    boolean hasNext();
+
+    // Adds an element before the iterator position
+    // and moves the iterator past the inserted element.
+    void add(Object element);
+
+    // Removes the last traversed element. This method may only be called after a call to the next() method.
+    void remove();
+
+    // Sets the last traversed element to a different value.
+    void set(Object element);
+
+} //end of ListIterator
+
+```
+
+## **_Linked List UML Diagram_**
+
+This UML Diagram explains the reference from LinkedList to LinkedListIterator and listIterator
+
+![LinkedListUML]()
+
+
+## **_Linked List Effeciency__*
+
+Let's compare the effeciency of using a linkedList compared to an ArrayList
+
+
+
 
 
 
