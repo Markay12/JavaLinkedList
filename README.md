@@ -39,7 +39,7 @@ Once this list is developed the user can perform operations on this list which a
 
 ## **_Data Structures_**
 To understand LinkedLists you must first understand data structures and how they are used within lists\
-\
+
 ### **Static Vs. Dynamic Data Structures**
 * A _static_ data structure has a fixed size (Arrays) `int[] numbers = new int[size]`
 * _Dynamic_ data structures grow and shrink as required by the information it contains (LinkedLists)
@@ -49,7 +49,7 @@ An object _reference_ is a var that stores the address of an object\
 A reference is also called a _pointer_\
 Object references can be used to create _links_ between objects
 
-![Data Structure Tree](https://duckduckgo.com/?t=ffab&q=data+structures&iax=images&ia=images&iai=https%3A%2F%2Fwww.javatpoint.com%2Fds%2Fimages%2Fds-introduction.png)
+![Data Structure Tree](https://raw.githubusercontent.com/Markay12/JavaLinkedList/master/edu/dataStructure.png)
 
 
 
