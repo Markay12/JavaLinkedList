@@ -6,6 +6,7 @@ package source;
 // standard java.util.LinkedList class.
 
 import java.util.NoSuchElementException;
+// import java.util.Iterator;
 
 public class LinkedList
 {
@@ -66,11 +67,12 @@ public class LinkedList
       first = newNode;
    }
 
-   // Returns an iterator for iterating through this list.
+   /* Returns an iterator for iterating through this list.
    public ListIterator listIterator()
    {
       return new LinkedListIterator();
    }
+   */
 
 
    public String toString()
@@ -479,7 +481,8 @@ public class LinkedList
 
 
 
-   //nested class to define its iterator
+   /*
+   nested class to define its iterator
    private class LinkedListIterator implements ListIterator
    {
       private Node position; //current position
@@ -597,4 +600,8 @@ public class LinkedList
           position.data = element;
       }
    } //end of LinkedListIterator class
+
+   */ 
+
+   
 } //end of LinkedList class
