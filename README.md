@@ -1,15 +1,13 @@
-# JavaLinkedList
-
 _Information for Program Including Notes and Explanation of LinkedLists_
 
-## **Table of Contents**
+# **Table of Contents**
 
 * [About me](https://github.com/Markay12/JavaLinkedList#about-me)
 * [Program Information](https://github.com/Markay12/JavaLinkedList#program-information)
 * [Data Structures](https://github.com/Markay12/JavaLinkedList#data-structures)
-* [Linked Lists]()
-* [Linked List UML Diagram]()
-* [Linked List Effeciency]()
+* [Linked Lists](https://github.com/Markay12/JavaLinkedList#linked-lists)
+* [Linked List UML Diagram](https://github.com/Markay12/JavaLinkedList#linked-list-uml-diagram)
+* [Linked List Effeciency](https://github.com/Markay12/JavaLinkedList#linked-list-effeciency_)
 
 
 
@@ -69,13 +67,13 @@ class Node
 
 ```
 1. This can construct a _linked list_
-![Name to Pointer]()
+![Name to Pointer](https://raw.githubusercontent.com/Markay12/JavaLinkedList/master/edu/namePointer.png)
 
 2. **Delete** an entry from a linked list
-![DeleteEntry]()
+![DeleteEntry](https://raw.githubusercontent.com/Markay12/JavaLinkedList/master/edu/DeleteEntry.png)
 
 3. Insert an element into the linked list
-![addElement]()
+![addElement](https://raw.githubusercontent.com/Markay12/JavaLinkedList/master/edu/DeleteEntry.png)
 
 
 ### Below is the basic information for constructing a linked list
@@ -329,10 +327,10 @@ public interface ListIterator
 
 This UML Diagram explains the reference from LinkedList to LinkedListIterator and listIterator
 
-![LinkedListUML]()
+![LinkedListUML](https://raw.githubusercontent.com/Markay12/JavaLinkedList/master/edu/linkedListUML.png)
 
 
-## **_Linked List Effeciency__*
+## **_Linked List Effeciency_**
 
 Let's compare the effeciency of using a linkedList compared to an ArrayList
 
