@@ -334,7 +334,7 @@ This UML Diagram explains the reference from LinkedList to LinkedListIterator an
 
 Let's compare the effeciency of using a linkedList compared to an ArrayList\
 
-![ListEffeciency]()
+![ListEffeciency](https://raw.githubusercontent.com/Markay12/JavaLinkedList/master/edu/ListEffeciency.png)
 
 * In ArrayList, we can access any element by specifying its index in constant time. – O(1)
 * In LinkedList, we need to go through n/2 elements on average to get to an element. – O(n)
