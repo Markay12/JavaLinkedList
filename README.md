@@ -332,7 +332,18 @@ This UML Diagram explains the reference from LinkedList to LinkedListIterator an
 
 ## **_Linked List Effeciency_**
 
-Let's compare the effeciency of using a linkedList compared to an ArrayList
+Let's compare the effeciency of using a linkedList compared to an ArrayList\
+
+![ListEffeciency]()
+
+* In ArrayList, we can access any element by specifying its index in constant time. – O(1)
+* In LinkedList, we need to go through n/2 elements on average to get to an element. – O(n)
+
+* In ArrayList, adding or removing an element can take O(n)   (=O(n/2) on average) because of shifting all elements.
+* In LinkedList, adding or removing an element can be done in constant time, assuming that the iterator is already in the right position – O(1)
+
+**NOTE:** This all depends on the algorithm that we are writing and what it calls for
+
 
 
 
