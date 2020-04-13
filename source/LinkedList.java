@@ -19,6 +19,7 @@ public class LinkedList
 
    //only instance variable that points to the first node.
    private Node first;
+   private int listSize = 0;
 
    // Constructs an empty linked list.
    public LinkedList()
@@ -52,6 +53,7 @@ public class LinkedList
        {
          Object element = first.data;
          first = first.next;  //change the reference since it's removed.
+         listSize--;
          return element;
        }
    }
@@ -65,6 +67,9 @@ public class LinkedList
       newNode.next = first;
       //change the first reference to the new node.
       first = newNode;
+
+      //update listSize
+      listSize++;
    }
 
    /* Returns an iterator for iterating through this list.
@@ -113,38 +118,8 @@ public class LinkedList
    public int size()
    {
 
-      //create size var
-      int size = 1;
-
-      //node to check first
-      Node current = first;
-
-
-      if (current != null)
-      {
-
-         size = 1;
-
-         //while current has a value
-         while (current.next != null)
-         {
-
-            current = current.next;
-            size++;
-
-
-         }
-
-      }
-      else
-      {
-
-         size = 0;
-
-      }
-
-      return size;
-
+      return listSize;
+      
    } //end of size() method
 
    public void addElement(Object element)
@@ -159,6 +134,7 @@ public class LinkedList
 
          //first item in the list should be set to this new Node
          first = newNode;
+         listSize++;
 
       }
       else if (first.data.toString().compareToIgnoreCase(element.toString()) >= 0)
@@ -167,6 +143,7 @@ public class LinkedList
          //the next node gets added to the front
          newNode.next = first;
          first = newNode;
+         listSize++;
 
       }
       else
@@ -178,6 +155,7 @@ public class LinkedList
          Node previous;
          move = first.next;
          previous = first;
+         listSize++;
 
          //if we can still move through the list and if this added data is closer to a, we add before
          while (move != null && move.data.toString().compareToIgnoreCase(element.toString()) < 0)
@@ -209,6 +187,7 @@ public class LinkedList
       //node to remove and node to keep track of previous (listIterator)
         Node remove = first.next;
         Node previous = first;
+        listSize = listSize / 2;
 
         //remove first
         first = first.next;
@@ -380,6 +359,9 @@ public class LinkedList
       if (first != null)
       {
 
+         //double the listSize int
+         listSize *= 2;
+
          //call created method
          duplicate(first);
 
@@ -431,6 +413,9 @@ public class LinkedList
          //we are removing the first from the list
          first = first.next;
 
+         //update listSize
+         listSize--;
+
          //return the original first
          return returnNode.data.toString();
           
@@ -445,6 +430,8 @@ public class LinkedList
          Node remove = first.next;
          Node previous = first;
          int count = 1;
+
+         
 
 
          //while we are able to remove an element
@@ -462,6 +449,7 @@ public class LinkedList
       
             returnNode = previous.next;
             previous.next = remove.next;
+            listSize--; //update listSize
             return returnNode.data.toString(); //return the element we removed
 
          }
